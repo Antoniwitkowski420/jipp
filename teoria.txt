@@ -1,0 +1,59 @@
+### Kompresja notatki: Języki i paradygmaty programowania
+
+--- 
+[!] Podstawowe pojęcia:
+- Specyfikacja problemu: Dane wejściowe, warunki, wyniki.
+- Algorytm: Skończony ciąg kroków (np. silnia, parzystość).
+- Programowanie: Pisanie kodu → kompilacja → debugowanie → uruchomienie.
+- Program: Algorytm w języku maszynowym.
+
+--- 
+[!] Języki programowania:
+1. Poziom:
+   - Niski (Asembler): Blisko sprzętu, trudny.
+   - Wysoki (Python, Java): Abstrakcja, przenośność.
+2. Wykonanie:
+   - Kompilowane (C++, C#): Szybkie, mniej przenośne.
+   - Interpretowane (JS, PHP): Wolne, przenośne.
+3. Struktura:
+   - Strukturalne (C): Funkcje/procedury.
+   - Obiektowe (C#, Java): Klasy, obiekty, dziedziczenie.
+
+--- 
+[!] C++: 
+- Typy: int, float, char + modyfikatory (signed, short).
+- Operatory: +, -, *, /, %, &&, ||.
+- Kontrola: if/else, switch, for/while.
+- Funkcje: Np. int suma(int a, int b) { return a+b; }.
+- Tablice: int tab[5];, operacje (min/max, sortowanie).
+- Wskaźniki: int *tab = new int[n]; → delete[] tab.
+
+--- 
+[!] OOP:
+- Klasy/Obiekty: class Osoba { public: string imie; };
+- Hermetyzacja: private/public + get/set.
+- Dziedziczenie: class Student : public Osoba {...}.
+- Polimorfizm: override (np. virtual void metoda()).
+- Klasy abstrakcyjne: virtual void rysuj() = 0;.
+
+--- 
+[!] Pliki:
+- fstream: Otwieranie/zapis/odczyt.
+- Konwersje: stoi(napis), (char)65.
+
+--- 
+[!] Zadania:
+1. Osoba: Imię, nazwisko, rok urodzenia + walidacja.
+2. Konto: Właściciel, saldo, PIN + wypłata z PIN.
+3. Hierarchia klas: Student → Wykładowca → Stypendysta.
+4. Zasoby ludzkie: Pracownicy fizyczni/umysłowi + obliczanie pensji.
+
+--- 
+[!] Podsumowanie:
+- Języki wysokopoziomowe: Abstrakcja, łatwość.
+- OOP: Modularność, zarządzanie kodem.
+- C++: Wydajność + OOP.
+
+
+
+
