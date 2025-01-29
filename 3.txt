@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a;
+    int b;
+    long long suma = 0;
+    cout << "Podaj liczbe 1: ";
+    cin >> a;
+    cout << "Podaj liczbe 2: ";
+    cin >> b;
+    int poczatek = a;
+    int koniec = b;
+
+    if (a > b) {
+        poczatek = b;
+        koniec = a;
+    }
+
+    // Obliczenie sumy liczb w przedziale
+    for (int i = poczatek; i <= koniec; i++) {
+        suma += i; // Dodajemy wartość i do sumy
+    }
+
+    cout << "Suma liczb od " << poczatek << " do " << koniec << " wynosi: " << suma << endl;
+
+    return 0;
+}

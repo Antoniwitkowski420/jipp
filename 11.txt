@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    const int ROZMIAR = 5;
+    int tablica[ROZMIAR];
+
+    // Inicjalizacja generatora losowego
+    srand(time(0));
+
+    // Wypełnianie tablicy losowymi liczbami z przedziału [-50, 50]
+    for (int i = 0; i < ROZMIAR; i++) {
+        tablica[i] = rand() % 101 - 50; // Losowe liczby z przedziału [-50, 50]
+    }
+
+    // Wyświetlanie tablicy
+    cout << "Tablica: ";
+    for (int i = 0; i < ROZMIAR; i++) {
+        cout << tablica[i] << " ";
+    }
+    cout << endl;
+
+    // Obliczanie sumy elementów
+    int suma = 0;
+    for (int i = 0; i < ROZMIAR; i++) {
+        suma += tablica[i];
+    }
+    cout << "Suma elementow: " << suma << endl;
+
+    // Liczenie elementów niezerowych
+    int niezerowe = 0;
+    for (int i = 0; i < ROZMIAR; i++) {
+        if (tablica[i] != 0) niezerowe++;
+    }
+    cout << "Ilosc elementow niezerowych: " << niezerowe << endl;
+
+    // Znalezienie elementu minimalnego i maksymalnego
+    int minEl = *min_element(tablica, tablica + ROZMIAR);
+    int maxEl = *max_element(tablica, tablica + ROZMIAR);
+    cout << "Element minimalny: " << minEl << endl;
+    cout << "Element maksymalny: " << maxEl << endl;
+
+    // Sortowanie tablicy
+    sort(tablica, tablica + ROZMIAR);
+
+    // Wyświetlenie posortowanej tablicy
+    cout << "Posortowana tablica: ";
+    for (int i = 0; i < ROZMIAR; i++) {
+        cout << tablica[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}

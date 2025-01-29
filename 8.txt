@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+int sumaCyfr(int n) {
+    int suma = 0;
+    while (n > 0) {
+        suma += n % 10;
+        n /= 10;
+    }
+    return suma;
+}
+
+bool czyPierwsza(int liczba) {
+    if (liczba < 2) return false;
+    for (int i = 2; i * i <= liczba; i++) {
+        if (liczba % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    int liczba;
+    cout << "Podaj liczbe: ";
+    cin >> liczba;
+
+    int suma = sumaCyfr(liczba);
+
+    if (czyPierwsza(suma)) {
+        cout << "Suma cyfr (" << suma << ") jest liczba pierwsza." << endl;
+    }
+    else {
+        cout << "Suma cyfr (" << suma << ") nie jest liczba pierwsza." << endl;
+    }
+
+    return 0;
+}

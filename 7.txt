@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int a;
+    bool pierwsza = true; // Zakładamy, że liczba jest pierwsza
+
+    cout << "Podaj liczbe, aby sprawdzic, czy jest pierwsza: ";
+    cin >> a;
+
+    if (a < 2) {
+        pierwsza = false; // Liczby mniejsze niż 2 nie są pierwsze
+    }
+    else {
+        for (int i = 2; i * i <= a; i++) { // Sprawdzamy dzielniki od 2 do √a
+            if (a % i == 0) {
+                pierwsza = false; // Jeśli liczba ma inny dzielnik, nie jest pierwsza
+                break;
+            }
+        }
+    }
+
+    if (pierwsza) {
+        cout << "Twoja liczba jest pierwsza!" << endl;
+    }
+    else {
+        cout << "Twoja liczba nie jest pierwsza." << endl;
+    }
+
+    return 0;
+}

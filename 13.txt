@@ -1,0 +1,82 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+using namespace std;
+
+const int ROZMIAR = 5;
+
+// Funkcja do wyświetlania tablicy
+void wyswietlTablice(int tab[ROZMIAR][ROZMIAR]) {
+    for (int i = 0; i < ROZMIAR; i++) {
+        for (int j = 0; j < ROZMIAR; j++) {
+            cout << tab[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    srand(time(0)); // Inicjalizacja generatora losowego
+    int tablica[ROZMIAR][ROZMIAR];
+
+    // a) Inicjalizacja tablicy losowymi wartościami z przedziału [0,2]
+    for (int i = 0; i < ROZMIAR; i++) {
+        for (int j = 0; j < ROZMIAR; j++) {
+            tablica[i][j] = rand() % 3; // Losowe wartości 0, 1 lub 2
+        }
+    }
+
+    // Wyświetlenie tablicy
+    cout << "Tablica:\n";
+    wyswietlTablice(tablica);
+
+    // b) Obliczenie sumy elementów w wierszach parzystych (indeksy 0, 2, 4)
+    int sumaParzystych = 0;
+    for (int i = 0; i < ROZMIAR; i += 2) {
+        for (int j = 0; j < ROZMIAR; j++) {
+            sumaParzystych += tablica[i][j];
+        }
+    }
+    cout << "Suma elementow w wierszach parzystych: " << sumaParzystych << endl;
+
+    // c) Wyznaczenie wartości minimalnej i maksymalnej
+    int minEl = tablica[0][0], maxEl = tablica[0][0];
+    for (int i = 0; i < ROZMIAR; i++) {
+        for (int j = 0; j < ROZMIAR; j++) {
+            if (tablica[i][j] < minEl) minEl = tablica[i][j];
+            if (tablica[i][j] > maxEl) maxEl = tablica[i][j];
+        }
+    }
+    cout << "Element minimalny: " << minEl << endl;
+    cout << "Element maksymalny: " << maxEl << endl;
+
+    // d) Sortowanie tablicy rosnąco
+    int temp[ROZMIAR * ROZMIAR]; // Jednowymiarowa tablica pomocnicza
+    int k = 0;
+
+    // Kopiowanie elementów do tablicy pomocniczej
+    for (int i = 0; i < ROZMIAR; i++) {
+        for (int j = 0; j < ROZMIAR; j++) {
+            temp[k++] = tablica[i][j];
+        }
+    }
+
+    // Sortowanie
+    sort(temp, temp + ROZMIAR * ROZMIAR);
+
+    // Przepisanie posortowanych wartości z powrotem do tablicy 2D
+    k = 0;
+    for (int i = 0; i < ROZMIAR; i++) {
+        for (int j = 0; j < ROZMIAR; j++) {
+            tablica[i][j] = temp[k++];
+        }
+    }
+
+    // Wyświetlenie posortowanej tablicy
+    cout << "Posortowana tablica:\n";
+    wyswietlTablice(tablica);
+
+    return 0;
+}

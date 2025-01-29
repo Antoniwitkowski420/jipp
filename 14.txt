@@ -1,0 +1,87 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+// Funkcja sprawdzająca, czy słowo jest palindromem
+bool czyPalindrom(const string& slowo) {
+    int lewy = 0, prawy = slowo.length() - 1;
+    while (lewy < prawy) {
+        if (slowo[lewy] != slowo[prawy]) {
+            return false;
+        }
+        lewy++;
+        prawy--;
+    }
+    return true;
+}
+
+int main() {
+    string nazwaPliku = "slowa.txt";
+
+    // Tworzenie pliku i zapisanie słów
+    ofstream plikWy(nazwaPliku);
+    if (!plikWy) {
+        cerr << "Nie można utworzyć pliku!" << endl;
+        return 1;
+    }
+
+    vector<string> slowa = {"ala", "kot", "kajak", "kawa", "dom", "anna", "szklanka", "oko", "arka"};
+    for (const string& slowo : slowa) {
+        plikWy << slowo << endl;
+    }
+    plikWy.close();
+
+    // Odczytanie pliku
+    ifstream plikWe(nazwaPliku);
+    if (!plikWe) {
+        cerr << "Nie można otworzyć pliku!" << endl;
+        return 1;
+    }
+
+    vector<string> odczytaneSlowa;
+    string slowo;
+    cout << "Zawartosc pliku:\n";
+    while (plikWe >> slowo) {
+        cout << slowo << endl;
+        odczytaneSlowa.push_back(slowo);
+    }
+    plikWe.close();
+
+    // a) Liczenie wierszy (ilości słów)
+    int liczbaWierszy = odczytaneSlowa.size();
+    cout << "\nLiczba wierszy w pliku: " << liczbaWierszy << endl;
+
+    // b) Wypisanie słów zakończonych na "a"
+    cout << "Slowa zakonczone na 'a': ";
+    for (const string& s : odczytaneSlowa) {
+        if (!s.empty() && s.back() == 'a') {
+            cout << s << " ";
+        }
+    }
+    cout << endl;
+
+    // c) Wypisanie słów, których trzecią literą od końca jest "k"
+    cout << "Slowa, ktorych trzecia litera od konca to 'k': ";
+    for (const string& s : odczytaneSlowa) {
+        if (s.length() >= 3 && s[s.length() - 3] == 'k') {
+            cout << s << " ";
+        }
+    }
+    cout << endl;
+
+    // d) Wypisanie i policzenie palindromów
+    int liczbaPalindromow = 0;
+    cout << "Palindromy: ";
+    for (const string& s : odczytaneSlowa) {
+        if (czyPalindrom(s)) {
+            cout << s << " ";
+            liczbaPalindromow++;
+        }
+    }
+    cout << "\nLiczba palindromow: " << liczbaPalindromow << endl;
+
+    return 0;
+}

@@ -1,0 +1,52 @@
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	double a,b, wynik;
+	int wybor;
+
+	cout << "wybierz operacje :\n";
+	cout << "1 - mnozenie \n";
+	cout << "2 - dzielenie \n";
+	cout << "3 - dodawanie \n";
+	cout << "4 - odejmowanie \n";
+	cout << "5 - pierwiastkowanie sumy \n";
+	cin >> wybor;
+
+	cout << "podaj 1 liczbe: \n";
+	cin >> a;
+	cout << "podaj 2 liczbe\n";
+	cin >> b;
+
+	switch ( wybor ){
+	case 1:
+		wynik = a * b;
+		cout << "wynik mnozenia: " << wynik << "\n";
+		break;
+	case 2:
+		wynik = a / b;
+		cout << "wynik dzielenia: " << wynik << "\n";
+		break;
+	case 3:
+		wynik = a + b;
+		cout << "wynik dodawania: " << wynik << "\n";
+		break;
+	case 4:
+		wynik = a - b;
+		cout << "wynik odejmowania: " << wynik << "\n";
+		break;
+	case 5:
+		wynik = sqrt(a + b);
+		cout << "wynik pierwiastka sumy: " << wynik << "\n";
+		break;
+
+	default:
+		cout << "nieznana opcja \n";
+		break;
+	}
+
+}
+

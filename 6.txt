@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int liczba, suma = 0;
+
+    cout << "Podaj liczbe: ";
+    cin >> liczba;
+
+    // Obliczanie sumy cyfr
+    liczba = abs(liczba); // Obsługa liczb ujemnych
+    while (liczba > 0) {
+        suma += liczba % 10; // Dodaj ostatnią cyfrę do sumy
+        liczba /= 10; // Usuń ostatnią cyfrę
+    }
+
+    cout << "Suma cyfr wynosi: " << suma << endl;
+
+    return 0;
+}

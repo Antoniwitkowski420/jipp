@@ -1,0 +1,69 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <bitset>
+
+using namespace std;
+
+// Funkcja konwertująca liczbę na postać binarną
+string naBinarne(int liczba) {
+    return bitset<32>(liczba).to_string(); // Konwersja na 32-bitową liczbę binarną
+}
+
+int main() {
+    string nazwaPliku = "liczby.txt";
+
+    // Tworzenie pliku i zapisanie liczb
+    ofstream plikWy(nazwaPliku);
+    if (!plikWy) {
+        cerr << "Nie można utworzyć pliku!" << endl;
+        return 1;
+    }
+
+    vector<int> liczby = { 10, 25, 8, 16, 33, 42, 50, 99, 14, 21 };
+    for (int liczba : liczby) {
+        plikWy << liczba << endl;
+    }
+    plikWy.close();
+
+    // Odczytanie pliku
+    ifstream plikWe(nazwaPliku);
+    if (!plikWe) {
+        cerr << "Nie można otworzyć pliku!" << endl;
+        return 1;
+    }
+
+    vector<int> odczytaneLiczby;
+    int liczba;
+    cout << "Zawartosc pliku:\n";
+    while (plikWe >> liczba) {
+        cout << liczba << endl;
+        odczytaneLiczby.push_back(liczba);
+    }
+    plikWe.close();
+
+    // a) Liczenie ilości liczb w pliku
+    int iloscLiczb = odczytaneLiczby.size();
+    cout << "\nLiczba liczb w pliku: " << iloscLiczb << endl;
+
+    // b) Wypisanie i liczenie liczb parzystych
+    cout << "Liczby parzyste: ";
+    int iloscParzystych = 0;
+    for (int num : odczytaneLiczby) {
+        if (num % 2 == 0) {
+            cout << num << " ";
+            iloscParzystych++;
+        }
+    }
+    cout << "\nLiczba liczb parzystych: " << iloscParzystych << endl;
+
+    // c) Suma liczb i konwersja na system binarny
+    int suma = 0;
+    for (int num : odczytaneLiczby) {
+        suma += num;
+    }
+    cout << "Suma liczb w systemie dziesietnym: " << suma << endl;
+    cout << "Suma liczb w systemie binarnym: " << naBinarne(suma) << endl;
+
+    return 0;
+}

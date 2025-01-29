@@ -1,0 +1,48 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n;
+
+    // Pobranie wartości n od użytkownika
+    cout << "Podaj liczbe elementow tablicy: ";
+    cin >> n;
+
+    // Dynamiczna alokacja tablicy
+    int* tab = new int[n];
+
+    // Wypełnienie tablicy wartościami od 0 do 10
+    for (int i = 0; i < n; i++) {
+        tab[i] = rand() % 11; // Losowe liczby z przedziału [0, 10]
+    }
+
+    // Wyświetlenie tablicy
+    cout << "Tablica: ";
+    for (int i = 0; i < n; i++) {
+        cout << tab[i] << " ";
+    }
+    cout << endl;
+
+    // Znalezienie elementu minimalnego i maksymalnego
+    int minEl = *min_element(tab, tab + n);
+    int maxEl = *max_element(tab, tab + n);
+    cout << "Element minimalny: " << minEl << endl;
+    cout << "Element maksymalny: " << maxEl << endl;
+
+    // Sortowanie tablicy w porządku rosnącym
+    sort(tab, tab + n);
+
+    // Wyświetlenie posortowanej tablicy
+    cout << "Posortowana tablica: ";
+    for (int i = 0; i < n; i++) {
+        cout << tab[i] << " ";
+    }
+    cout << endl;
+
+    // Zwolnienie pamięci
+    delete[] tab;
+
+    return 0;
+}

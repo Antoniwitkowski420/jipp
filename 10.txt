@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string naBinarne(int liczba) {
+    if (liczba == 0) return "0";
+
+    string binarny = "";
+    while (liczba > 0) {
+        binarny = to_string(liczba % 2) + binarny;
+        liczba /= 2;
+    }
+    return binarny;
+}
+
+int main() {
+    int liczba;
+    cout << "Podaj liczbe: ";
+    cin >> liczba;
+
+    cout << "Postac binarna: " << naBinarne(liczba) << endl;
+
+    return 0;
+}

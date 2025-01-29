@@ -1,0 +1,19 @@
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a;
+    cout << "podaj liczbe: ";
+    cin >> a;
+    if (a >= -50 && a <= 50 && a != 0) {
+        cout << "twoja liczba miesci sie w przedziale -50 50 i nie jest to 0";
+    }
+    else {
+        cout << "twoja liczba nie miesci sie w przedziale -50 50 lub jest to 0";
+    }
+
+}
+

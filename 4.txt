@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int liczba;
+    int licznik = 0;
+    int totalWprowadzonych = 0; // Opcjonalne: Liczba wszystkich wprowadzonych liczb
+
+    cout << "Program zlicza ilosc podanych liczb podzielnych przez 3.\n";
+    cout << "Program zakonczy dzialanie po wprowadzeniu 5 liczb podzielnych przez 3.\n\n";
+
+    while (licznik < 5) { // Kontynuuj, dopoki licznik < 5
+        cout << "Podaj liczbe: ";
+        cin >> liczba;
+
+        // Sprawdzenie, czy wejscie jest prawidlowe (prostym sposobem)
+        if (!cin) {
+            cout << "Nieprawidlowe dane. Prosze wprowadzic liczbe calkowita.\n\n";
+            cin.clear(); // Czysci blad wejscia
+            cin.ignore(1000, '\n'); // Ignoruje niepoprawne znaki
+            continue;
+        }
+
+        totalWprowadzonych++; // Zlicza wszystkie wprowadzone liczby
+
+        // Sprawdzenie, czy liczba jest podzielna przez 3
+        if (liczba % 3 == 0) {
+            licznik++;
+            cout << "Liczba " << liczba << " jest podzielna przez 3. Aktualny licznik: " << licznik << "\n\n";
+        }
+        else {
+            cout << "Liczba " << liczba << " nie jest podzielna przez 3.\n\n";
+        }
+    }
+
+    cout << "Osiagnieto 5 liczb podzielnych przez 3. Zakonczenie programu.\n";
+    cout << "Lacznie wprowadzono " << totalWprowadzonych << " liczb, z czego 5 bylo podzielnych przez 3.\n";
+
+    return 0;
+}
